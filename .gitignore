@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+*.venv
+.env
+.venv/
+env/
+venv/
+ENV/
+*.sqlite3
+db.sqlite3
+*.log
+
+# Django stuff
+*.pot
+*.pyc
+*.pyo
+*.mo
+*.log
+staticfiles/
+media/
+local_settings.py
+
+# VS Code
+.vscode/
+
+# Migrations (optional, depends on workflow)
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# System
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+
+# Jupyter Notebooks (if used)
+.ipynb_checkpoints/
+
+# Tests
+test-results/
+
+# Compiled files
+*.so

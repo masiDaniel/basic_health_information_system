@@ -21,10 +21,10 @@ This is a mobile system that easenes medical systems by ensuring that doctors ca
 # SetUp instructions.
 ## Backend.
 1. Clone the repository
-2. cd backend/
-3. create a virtual environment using: (python venv -m .venv)
-4. activate the virtual enviroment using: (source .venv/bin/activate)
-5. install dependecies using: (pip install -r requirements.txt)
+2. create a virtual environment using: ( python3 -m venv .venv)
+3. activate the virtual enviroment using: (source .venv/bin/activate) 
+4. install dependecies using: (pip install -r requirements.txt)
+5. cd healthBackend/
 6. start the server using: (python manage.py runserver)
 
 ## Frontend
