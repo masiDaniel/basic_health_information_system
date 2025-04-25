@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from programs.models import Program
 from programs.serializers import ProgramSerializer
 from accounts.models import ClientProfile, DoctorProfile  
+from accounts.serializers import ClientProfileSerializer
 
 class CreateProgramAPIView(APIView):
     permission_classes = [IsAuthenticated]
@@ -43,7 +44,7 @@ class GetOneOrAllProgramsAPIView(APIView):
         
 
 class AddClientToProgramAPIView(APIView):
-    permission_classes = [IsAuthenticated]  # Ensure the doctor is authenticated
+    permission_classes = [IsAuthenticated] 
 
     def post(self, request):
       
@@ -71,3 +72,11 @@ class AddClientToProgramAPIView(APIView):
             program.clients.add(client)
 
         return Response({"message": "Client added to the selected programs successfully."}, status=status.HTTP_200_OK)
+
+
+class GetAllRegisteredClientsAPIView(APIView):
+    permission_classes = [IsAuthenticated] 
+    def get(self, request):
+        Clients = ClientProfile.objects.all()
+        serializer = ClientProfileSerializer(Clients, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

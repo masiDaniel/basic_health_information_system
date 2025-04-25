@@ -11,7 +11,8 @@ class ProgramSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Program
-        fields = ['id', 'name', 'clients']
+        exclude = ['clients']
+        fields = "__all__"
 
     def create(self, validated_data):
         request = self.context.get('request')
@@ -20,3 +21,9 @@ class ProgramSerializer(serializers.ModelSerializer):
         program = Program.objects.create(doctor=doctor, **validated_data)
         program.clients.set(clients)
         return program
+    
+class ClientProgramSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Program
+        exclude = ['clients']

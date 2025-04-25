@@ -1,4 +1,6 @@
 from rest_framework import serializers
+
+from programs.serializers import ClientProgramSerializer, ProgramSerializer
 from .models import ClientProfile, CustomUser, DoctorProfile
 
 
@@ -38,3 +40,12 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             print(f"Doctor profile created: {profile}")
 
         return user
+    
+class ClientProfileSerializer(serializers.ModelSerializer):
+    user_name = serializers.CharField(source='user.get_full_name', read_only=True)
+    email = serializers.EmailField(source='user.email', read_only=True)
+    programs = ClientProgramSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = ClientProfile
+        fields = ['id', 'user_name', 'email', 'age', 'gender', 'programs']

@@ -10,7 +10,7 @@ class Program(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     doctor = models.OneToOneField(DoctorProfile, on_delete=models.CASCADE) 
-    clients = models.ManyToManyField(ClientProfile, blank=True) 
+    clients = models.ManyToManyField(ClientProfile, blank=True, related_name='programs') 
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
 
