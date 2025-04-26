@@ -42,10 +42,10 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         return user
     
 class ClientProfileSerializer(serializers.ModelSerializer):
-    user_name = serializers.CharField(source='user.get_full_name', read_only=True)
+    # user_name = serializers.CharField(source='user.get_full_name', read_only=True)
     email = serializers.EmailField(source='user.email', read_only=True)
     programs = ClientProgramSerializer(many=True, read_only=True)
 
     class Meta:
         model = ClientProfile
-        fields = ['id', 'user_name', 'email', 'age', 'gender', 'programs']
+        fields = ['id', 'email', 'age', 'gender', 'programs']

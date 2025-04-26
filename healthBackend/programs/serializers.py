@@ -11,12 +11,11 @@ class ProgramSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Program
-        exclude = ['clients']
         fields = "__all__"
 
     def create(self, validated_data):
         request = self.context.get('request')
-        doctor = request.user.doctorprofile  
+        doctor = validated_data.pop('doctor', None)
         clients = validated_data.pop('client', [])
         program = Program.objects.create(doctor=doctor, **validated_data)
         program.clients.set(clients)

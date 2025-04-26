@@ -8,14 +8,11 @@ class Program(models.Model):
     description = models.TextField(blank=True, null=True) 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-    doctor = models.OneToOneField(DoctorProfile, on_delete=models.CASCADE) 
+    doctor = models.ForeignKey(DoctorProfile, on_delete=models.CASCADE, related_name='programs')
     clients = models.ManyToManyField(ClientProfile, blank=True, related_name='programs') 
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
-
     is_active = models.BooleanField(default=True)
-
     goals = models.TextField(blank=True, null=True)
     treatment_guidelines = models.TextField(blank=True, null=True)
     location = models.CharField(max_length=100, blank=True, null=True)
