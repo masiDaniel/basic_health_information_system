@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_frontend/models/program_model.dart';
+import 'package:health_frontend/screens/programs_screen.dart';
 import 'package:health_frontend/services/program_services.dart';
 
 class CreateProgramScreen extends StatefulWidget {
@@ -69,7 +70,17 @@ class _CreateProgramScreenState extends State<CreateProgramScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Create New Program')),
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => ProgramsScreen()),
+            );
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
+        title: Text('Create New Program'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -92,30 +103,63 @@ class _CreateProgramScreenState extends State<CreateProgramScreen> {
                 Row(
                   children: [
                     Expanded(
-                      child: Text(
-                        _startDate == null
-                            ? 'Start Date'
-                            : 'Start: ${_startDate!.toLocal()}'.split(' ')[0],
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 16,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          _startDate == null
+                              ? 'Select Start Date'
+                              : 'Start: ${_startDate!.toLocal().toString().split(' ')[0]}',
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
                     ),
-                    ElevatedButton(
+                    SizedBox(width: 10),
+                    ElevatedButton.icon(
                       onPressed: () => _selectDate(context, true),
-                      child: Text('Pick Start Date'),
+                      icon: Icon(Icons.date_range),
+                      label: Text('Pick Start'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                      ),
                     ),
                   ],
                 ),
+                SizedBox(height: 16),
                 Row(
                   children: [
                     Expanded(
-                      child: Text(
-                        _endDate == null
-                            ? 'End Date'
-                            : 'End: ${_endDate!.toLocal()}'.split(' ')[0],
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 16,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          _endDate == null
+                              ? 'Select End Date'
+                              : 'End: ${_endDate!.toLocal().toString().split(' ')[0]}',
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
                     ),
-                    ElevatedButton(
+                    SizedBox(width: 10),
+                    ElevatedButton.icon(
                       onPressed: () => _selectDate(context, false),
-                      child: Text('Pick End Date'),
+                      icon: Icon(Icons.date_range),
+                      label: Text('Pick End'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                      ),
                     ),
                   ],
                 ),

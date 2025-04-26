@@ -60,9 +60,9 @@ class ProgramService {
     }
   }
 
-  Future<void> addClientToProgram({
+  Future<void> addClientToPrograms({
     required int clientId,
-    required int programId,
+    required List<int> programIds,
   }) async {
     final token = await _getToken();
     final response = await http.post(
@@ -73,12 +73,12 @@ class ProgramService {
       },
       body: json.encode({
         'client_id': clientId,
-        'program_ids': [programId],
+        'program_ids': programIds, // send as a list, even if it's one ID
       }),
     );
 
     if (response.statusCode != 200 && response.statusCode != 201) {
-      throw Exception('Failed to add client to program');
+      throw Exception('Failed to add client to programs');
     }
   }
 }

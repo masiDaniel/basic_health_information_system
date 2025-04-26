@@ -48,9 +48,9 @@ class _ProgramDetailsScreenState extends State<ProgramDetailsScreen> {
     if (selectedClientId == null) return;
 
     try {
-      await ProgramService().addClientToProgram(
+      await ProgramService().addClientToPrograms(
         clientId: selectedClientId!,
-        programId: widget.program.id,
+        programIds: [widget.program.id],
       );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Client added to program successfully!')),
@@ -67,7 +67,7 @@ class _ProgramDetailsScreenState extends State<ProgramDetailsScreen> {
       appBar: AppBar(
         title: Text(widget.program.name),
         centerTitle: true,
-        backgroundColor: Colors.deepPurple, // Custom color
+        backgroundColor: Colors.blue, // Custom color
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -136,7 +136,7 @@ class _ProgramDetailsScreenState extends State<ProgramDetailsScreen> {
                                 client.email[0].toUpperCase(),
                                 style: TextStyle(color: Colors.white),
                               ),
-                              backgroundColor: Colors.deepPurple,
+                              backgroundColor: Colors.blue,
                             ),
                             title: Text(client.email),
                             subtitle: Text(
@@ -172,7 +172,7 @@ class _ProgramDetailsScreenState extends State<ProgramDetailsScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    backgroundColor: Colors.deepPurple,
+                    backgroundColor: Colors.blue,
                   ),
                 ),
               ),

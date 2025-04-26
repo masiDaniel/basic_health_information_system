@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:health_frontend/models/program_model.dart';
+import 'package:health_frontend/screens/client_screen.dart';
+import 'package:health_frontend/screens/create_client_screen.dart';
 import 'package:health_frontend/screens/create_program_screen.dart';
 import 'package:health_frontend/screens/program_details_screen.dart';
 import 'package:health_frontend/services/program_services.dart';
@@ -52,9 +54,20 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
   }
 
   void _goToCreateProgram() {
-    Navigator.push(
-      context,
+    Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (context) => CreateProgramScreen()),
+    );
+  }
+
+  void _goToCreateClient() {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => CreateClientScreen()),
+    );
+  }
+
+  void _goToClientList() {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => ClientDetailsScreen()),
     );
   }
 
@@ -119,7 +132,7 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
       floatingActionButton: SpeedDial(
         icon: Icons.add,
         activeIcon: Icons.close,
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         children: [
           SpeedDialChild(
@@ -129,8 +142,13 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
           ),
           SpeedDialChild(
             child: Icon(Icons.person_add),
-            label: 'Create Client',
-            onTap: () {},
+            label: 'Register Client',
+            onTap: _goToCreateClient,
+          ),
+          SpeedDialChild(
+            child: Icon(Icons.person_add),
+            label: 'client list',
+            onTap: _goToClientList,
           ),
         ],
       ),
