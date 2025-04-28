@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "912d3feb-4351-4ec8-bfc9-2a498d1600d0",
+		"name": "demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33880348",
+		"_collection_link": "https://homidev-team.postman.co/workspace/CEMA~4cda8f39-009f-45e6-803f-ffacd4b05f41/collection/33880348-912d3feb-4351-4ec8-bfc9-2a498d1600d0?action=share&source=collection_link&creator=33880348"
+	},
+	"item": [
+		{
+			"name": "registration",
+			"item": [
+				{
+					"name": "registerUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Martin\",\n    \"email\": \"john@client.com\",\n    \"password\": \"strongpass\",\n    \"role\": \"doctor\",\n    \"age\": 22,\n    \"specialization\": \"Dentist\",\n\n    \"phone_number\": \"0723456781\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}accounts/register/",
+							"host": [
+								"{{base_url}}accounts"
+							],
+							"path": [
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"martin\",\n    \"password\": \"strongpass\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}accounts/login/",
+							"host": [
+								"{{base_url}}accounts"
+							],
+							"path": [
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Programs",
+			"item": [
+				{
+					"name": "create-program",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b793afd12cdfc7e364c67e483fb5c5f01a044ee1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \n        \"Malaria.\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}programs/create-program/",
+							"host": [
+								"{{base_url}}programs"
+							],
+							"path": [
+								"create-program",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPrograms",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b793afd12cdfc7e364c67e483fb5c5f01a044ee1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}programs/programs/Malaria./",
+							"host": [
+								"{{base_url}}programs"
+							],
+							"path": [
+								"programs",
+								"Malaria.",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_a_program",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b793afd12cdfc7e364c67e483fb5c5f01a044ee1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}programs/programs/",
+							"host": [
+								"{{base_url}}programs"
+							],
+							"path": [
+								"programs",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-client-to-program",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b793afd12cdfc7e364c67e483fb5c5f01a044ee1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"client_id\": 3, \n    \"program_ids\":[2]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}programs/programs/add-client/",
+							"host": [
+								"{{base_url}}programs"
+							],
+							"path": [
+								"programs",
+								"add-client",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "clientProfile",
+			"item": [
+				{
+					"name": "get-all-clients",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b793afd12cdfc7e364c67e483fb5c5f01a044ee1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}programs/clients/",
+							"host": [
+								"{{base_url}}programs"
+							],
+							"path": [
+								"clients",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}

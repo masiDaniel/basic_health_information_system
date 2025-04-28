@@ -57,7 +57,6 @@ class _CreateProgramScreenState extends State<CreateProgramScreen> {
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text('Program created successfully')));
-        Navigator.pop(context);
       } catch (e) {
         print('Failed to create program: $e');
         ScaffoldMessenger.of(

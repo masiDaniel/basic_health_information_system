@@ -29,14 +29,11 @@ class _CreateClientScreenState extends State<CreateClientScreen> {
           "phone_number": _phoneController.text,
         };
 
-        await ClientService().createClient(
-          newClient,
-        ); // You implement this service
+        await ClientService().createClient(newClient);
 
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text('Client created successfully')));
-        Navigator.pop(context);
       } catch (e) {
         print('Failed to create client: $e');
         ScaffoldMessenger.of(

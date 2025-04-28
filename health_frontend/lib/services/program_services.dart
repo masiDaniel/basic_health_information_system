@@ -12,9 +12,10 @@ class ProgramService {
     return prefs.getString('auth_token');
   }
 
-  Future<CreateProgram> createProgram(CreateProgram program) async {
+  Future<void> createProgram(CreateProgram program) async {
     final token = await _getToken();
     final String baseUrl = 'http://127.0.0.1:8000/programs/create-program/';
+
     final response = await http.post(
       Uri.parse(baseUrl),
       headers: {
@@ -24,10 +25,10 @@ class ProgramService {
       body: jsonEncode(program.toJson()),
     );
 
-    if (response.statusCode != 201) {
-      throw Exception('Failed to create program: ${response.body}');
+    if (response.statusCode == 201) {
     } else {
-      throw Exception('created program: ${response.body}');
+      // Failure - Something went wrong
+      throw Exception('Failed to create program: ${response.body}');
     }
   }
 

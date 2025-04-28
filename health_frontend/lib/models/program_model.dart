@@ -152,6 +152,20 @@ class CreateProgram {
     required this.treatmentGuidelines,
   });
 
+  factory CreateProgram.fromJson(Map<String, dynamic> json) {
+    return CreateProgram(
+      name: json['name'],
+      description: json['description'],
+
+      startDate: DateTime.parse(json['start_date']),
+      endDate: DateTime.parse(json['end_date']),
+
+      goals: json['goals'],
+      treatmentGuidelines: json['treatment_guidelines'],
+      location: json['location'],
+      doctor: json['doctor'],
+    );
+  }
   Map<String, dynamic> toJson() {
     return {
       'name': name,
